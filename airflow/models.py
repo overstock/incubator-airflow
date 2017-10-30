@@ -660,6 +660,8 @@ class Connection(Base):
             elif self.conn_type == 'jira':
                 from airflow.contrib.hooks.jira_hook import JiraHook
                 return JiraHook(jira_conn_id=self.conn_id)
+            elif self.conn_type == 'snowflake':
+                return contrib_hooks.SnowflakeHook(snowflake_conn_id=self.conn_id)
         except:
             pass
 
