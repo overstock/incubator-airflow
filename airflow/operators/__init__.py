@@ -91,7 +91,6 @@ _operators = {
     'slack_operator': ['SlackAPIOperator', 'SlackAPIPostOperator'],
     'generic_transfer': ['GenericTransfer'],
     'oracle_operator': ['OracleOperator'],
-    'snowflake_operator': ['SnowflakeSQL'],
 }
 
 import os as _os

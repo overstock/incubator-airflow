@@ -37,7 +37,8 @@ _operators = {
     'vertica_to_hive': ['VerticaToHiveTransfer'],
     'qubole_operator': ['QuboleOperator'],
     'spark_submit_operator': ['SparkSubmitOperator'],
-    'fs_operator': ['FileSensor']
+    'fs_operator': ['FileSensor'],
+    'snowflake_operator': ['SnowflakeSQL']
 }
 
 import os as _os
