@@ -29,7 +29,8 @@ class SnowflakeHook(DbApiHook):
     at /admin/queryview/ to use these connections too.
 
                 elif self.conn_type == 'snowflake':
-                return contrib_hooks.SnowflakeHook(snowflake_conn_id=self.conn_id)
+                    from airflow.contrib.hooks.snowflake_hook import SnowflakeHook
+                    return SnowflakeHook(snowflake_conn_id=self.conn_id)
 
     File:  contrib/hooks/snowflake_hook.py
     Version: Tue Mar 28 18:00:00 UTC 2017
@@ -85,4 +86,3 @@ class SnowflakeHook(DbApiHook):
         result=conn.execute(sql)
         results=result.fetchall()
         return results
-

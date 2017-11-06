@@ -537,6 +537,7 @@ class Connection(Base):
         ('mssql', 'Microsoft SQL Server'),
         ('mesos_framework-id', 'Mesos Framework ID'),
         ('jira', 'JIRA',),
+        ('snowflake', 'Snowflake'),
     ]
 
     def __init__(
@@ -660,6 +661,9 @@ class Connection(Base):
             elif self.conn_type == 'jira':
                 from airflow.contrib.hooks.jira_hook import JiraHook
                 return JiraHook(jira_conn_id=self.conn_id)
+            elif self.conn_type == 'snowflake':
+                from airflow.contrib.hooks.snowflake_hook import SnowflakeHook
+                return SnowflakeHook(snowflake_conn_id=self.conn_id)
         except:
             pass
 

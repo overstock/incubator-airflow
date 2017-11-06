@@ -1,12 +1,12 @@
 # airflow-snowflake
 
-Code to be contributed to the Apache Airflow (incubating) project for ETL workflow management. 
+Code to be contributed to the Apache Airflow (incubating) project for ETL workflow management.
 
 This code provides two interfaces to the Snowflake Data Warehouse in the form of a "hook" and "operator"
 
 For Airflow, see these links:
 
-https://airflow.incubator.apache.org/concepts.html#hooks 
+https://airflow.incubator.apache.org/concepts.html#hooks
 https://airflow.incubator.apache.org/concepts.html#operators
 
 This code uses the Python connector to Snowflake, see https://docs.snowflake.net/manuals/user-guide/python-connector.html
@@ -23,7 +23,8 @@ This code uses the Python connector to Snowflake, see https://docs.snowflake.net
     at /admin/queryview/ to use these connections too.
 
                 elif self.conn_type == 'snowflake':
-                return contrib_hooks.SnowflakeHook(snowflake_conn_id=self.conn_id)
+                    from airflow.contrib.hooks.snowflake_hook import SnowflakeHook
+                    return SnowflakeHook(snowflake_conn_id=self.conn_id)
 
      The Airflow CONNECTION table has columns for typical parameters such as HOST, USER, and PASSWORD,
      but Snowflake uses slightly different parameters. It makes sense to store the Snowflake ACCOUNT
@@ -60,7 +61,6 @@ This code uses the Python connector to Snowflake, see https://docs.snowflake.net
 # Limitations
 
 This code has only been tested with Airflow version 1.7.1.3.
-This code is not (yet) incorporated into teh Airflow distribution.
+This code is not (yet) incorporated into the Airflow distribution.
 
 March 28 2017
-
