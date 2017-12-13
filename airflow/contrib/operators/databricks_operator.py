@@ -315,15 +315,15 @@ class DatabricksRunNowOperator(BaseOperator):
     def execute(self, context):
         hook = self.get_hook()
         self.run_id = hook.run_now(self.json)
-        run_page_url = hook.get_run_page_url(self.run_id)
+        # run_page_url = hook.get_run_page_url(self.run_id)
         self.log.info('Run submitted with run_id: %s', self.run_id)
-        self._log_run_page_url(run_page_url)
+        # self._log_run_page_url(run_page_url)
         while True:
             run_state = hook.get_run_state(self.run_id)
             if run_state.is_terminal:
                 if run_state.is_successful:
                     self.log.info('%s completed successfully.', self.task_id)
-                    self._log_run_page_url(run_page_url)
+                    # self._log_run_page_url(run_page_url)
                     return
                 else:
                     error_message = '{t} failed with terminal state: {s}'.format(
@@ -332,7 +332,7 @@ class DatabricksRunNowOperator(BaseOperator):
                     raise AirflowException(error_message)
             else:
                 self.log.info('%s in run state: %s', self.task_id, run_state)
-                self._log_run_page_url(run_page_url)
+                # self._log_run_page_url(run_page_url)
                 self.log.info('Sleeping for %s seconds.', self.polling_period_seconds)
                 time.sleep(self.polling_period_seconds)
 
